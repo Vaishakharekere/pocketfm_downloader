@@ -40,7 +40,6 @@ def headers(access_token=None):
         'accept-language':'en-RO,en;q=0.9,zh-RO;q=0.8,zh;q=0.7,en-GB;q=0.6,en-US;q=0.5',
         'app-client':'consumer-web',
         'app-version':'180',
-        'auth-token':'web-auth',
         'cache-control':'no-cache',
         'device-id':'mobile-web',
         'dnt':'1',
@@ -60,6 +59,8 @@ def headers(access_token=None):
     }
     if access_token:
         headers['access-token'] = access_token
+    else:
+        headers['auth-token'] = 'web-auth'
     return headers
 
 def fetch_pocketfm_data(show_id, pattern='*', headers=headers(access_token), base_url=base_url()):
